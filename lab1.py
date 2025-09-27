@@ -79,9 +79,7 @@ b = 0.5  # secondary scaling factor
 phi = np.linspace(0, 2*np.pi, 200)  # azimuthal angles
 theta = np.linspace(0, np.pi, 100)  # polar angles
 
-# -----------------------------
 # 2D Polar Plot (Equatorial cut)
-# -----------------------------
 # Compute rho at theta = π/2 (equatorial plane)
 cos_2phi = np.cos(2 * phi)  # cos(2*phi) term
 term1 = cos_2phi + np.sqrt(np.maximum(cos_2phi**2 * ((b**2 / a**2) - 1), 0))  # avoid negative sqrt
@@ -100,9 +98,7 @@ ax.grid(True)
 ax.set_title("Polar Plot of ρ(φ) at θ = π/2", va='bottom')
 plt.show()
 
-# -----------------------------
 # 3D Surface Plot
-# -----------------------------
 # Create 2D grids of angles
 PHI, THETA = np.meshgrid(phi, theta)
 
