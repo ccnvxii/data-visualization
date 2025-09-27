@@ -1,9 +1,20 @@
-# idea folder, uncomment if you don't need it
-.idea
+# PyCharm project files
+.idea/
+
+# Python virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Compiled Python files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
 
 # Distribution / packaging
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -14,10 +25,13 @@ lib/
 lib64/
 parts/
 sdist/
-var/
 *.egg-info/
 .installed.cfg
 *.egg
 
-### VirtualEnv template
-.venv
+# Other common ignores
+*.log
+*.pot
+*.DS_Store
+*.swp
+*~
