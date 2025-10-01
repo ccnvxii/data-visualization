@@ -3,11 +3,11 @@ import sys
 import subprocess
 import networkx as nx
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches  # <-- for legend
+import matplotlib.patches as mpatches
 
 
 def is_hidden_dir(d):
-    # Check if a directory is hidden (works differently on Windows and Unix-like systems)
+    # Check if a directory is hidden
     if sys.platform.startswith("win"):
         try:
             p = subprocess.check_output(["attrib", d.encode('cp1251', errors='replace')])
