@@ -7,14 +7,16 @@ MAX_FOLLOWINGS_COUNT = 20  # Maximum number of followings to fetch
 
 # Login to Instagram
 instagram_client = Client()
-instagram_client.delay_range = [1, 5]  # Recommended delay to avoid rate limits
+instagram_client.delay_range = [1, 5]  # Set deley according to recomendation
 
 USERNAME = input("Input your Instagram username: ")
 PASSWORD = input("Input your Instagram password: ")
 
+# check for login and password is not empty
 assert USERNAME, 'Username must be provided'
 assert PASSWORD, 'Password must be provided'
 
+# try-except check for two factor autorization
 try:
     instagram_client.login(USERNAME, PASSWORD)
     print("Logged in successfully")

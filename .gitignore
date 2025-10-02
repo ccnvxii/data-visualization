@@ -6,6 +6,7 @@
 venv/
 ENV/
 env/
+out/
 
 # Compiled Python files
 *.pyc
