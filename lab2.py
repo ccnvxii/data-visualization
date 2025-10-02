@@ -43,31 +43,66 @@ plt.show()
 # ----------------------------------
 # 2) 2D vector field F = (x^2 y, -y)
 # ----------------------------------
-x = np.linspace(-10, 10, 20)
-y = np.linspace(-10, 10, 20)
-X, Y = np.meshgrid(x, y)
+def Fx(x, y):
+    # x-component of the vector field with clipping to avoid overflow
+    return np.clip(x ** 2 * y, -1e3, 1e3)
 
-Fx = X ** 2 * Y
-Fy = -Y
+def Fy(x, y):
+    # y-component of the vector field
+    return -y
+
+# Visualization of the vector field using quiver and streamplot
+x = np.linspace(-5, 5, 20)   # grid for x
+y = np.linspace(-5, 5, 20)   # grid for y
+X, Y = np.meshgrid(x, y)     # create meshgrid
+
+U = Fx(X, Y)  # calculate x-component values
+V = Fy(X, Y)  # calculate y-component values
 
 plt.figure(figsize=(12, 5))
 
-# Vector field using quiver (arrows)
+# Vector field with arrows (quiver)
 plt.subplot(1, 2, 1)
-plt.quiver(X, Y, Fx, Fy)
+plt.quiver(X, Y, U, V, scale=500, color="blue")
 plt.title("Vector field F(x,y) with quiver")
 plt.xlabel("x")
 plt.ylabel("y")
 plt.grid(True)
 
-# Vector field using streamlines
+# Vector field with streamlines (streamplot)
 plt.subplot(1, 2, 2)
-plt.streamplot(X, Y, Fx, Fy, color="blue")
+plt.streamplot(X, Y, U, V, color="red", density=1)
 plt.title("Vector field F(x,y) with streamlines")
 plt.xlabel("x")
 plt.ylabel("y")
 plt.grid(True)
+
 plt.tight_layout()
+plt.show()
+
+# Streamlines construction
+def create_stream_line(x0, y0, Fx, Fy, t0=0, t1=5, dt=0.01):
+    # Generate points in time interval
+    t = np.arange(t0, t1, dt)
+    xx_new = np.zeros_like(t)
+    yy_new = np.zeros_like(t)
+    xx_new[0], yy_new[0] = x0, y0
+
+    for i in range(1, len(t)):
+        xx_new[i] = xx_new[i - 1] + Fx(xx_new[i - 1], yy_new[i - 1]) * dt
+        yy_new[i] = yy_new[i - 1] + Fy(xx_new[i - 1], yy_new[i - 1]) * dt
+    return xx_new, yy_new
+
+# Plot streamlines starting from different initial y positions
+plt.figure(figsize=(6, 6))
+for y0 in np.linspace(-4, 4, 7):   # initial points
+    x1, y1 = create_stream_line(-4, y0, Fx, Fy)
+    plt.plot(x1, y1)
+
+plt.title("Stream lines by integration (Euler method)")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.grid(True)
 plt.show()
 
 # --------------------------------------------------------------
