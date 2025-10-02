@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2025-10-02">
+    <creator>NetworkX 3.5</creator>
+  </meta>
+  <graph defaultedgetype="undirected" mode="static" name="">
+    <nodes>
+      <node id="ccnvxii" label="ccnvxii" />
+      <node id="elenaaaa_tr" label="Elena" />
+      <node id="r.nadtochii" label="Руслан Надточий" />
+      <node id="aminaazharik" label="Amina" />
+      <node id="alinash_muah" label="UGC | GRWM | Контент для брендів" />
+      <node id="ultimatriixx" label="" />
+      <node id="deliia.dv" label="Дмитро Делія" />
+      <node id="_thgadf" label="Катерина" />
+      <node id="yaroslavad_m" label="Yaroslavad_m" />
+      <node id="natalka_1305" label="Natalka" />
+      <node id="bodya.wave" label="𖣂" />
+      <node id="bogenemy" label="" />
+      <node id="a.ternovtsi" label="анастейша 🤍" />
+      <node id="evgeni_stasuk" label="Женя)" />
+      <node id="yakesliho" label="kseniia" />
+      <node id="uniwixe" label="" />
+      <node id="valentina.eroh" label="Valentina" />
+      <node id="darii.il" label="" />
+      <node id="jaegerjem" label="" />
+      <node id="scarletears.store" label="scarlet tears" />
+      <node id="lliisett" label="Yelyzaveta Vorobiova" />
+    </nodes>
+    <edges>
+      <edge source="ccnvxii" target="elenaaaa_tr" id="0" />
+      <edge source="ccnvxii" target="r.nadtochii" id="1" />
+      <edge source="ccnvxii" target="aminaazharik" id="2" />
+      <edge source="ccnvxii" target="alinash_muah" id="3" />
+      <edge source="ccnvxii" target="ultimatriixx" id="4" />
+      <edge source="ccnvxii" target="deliia.dv" id="5" />
+      <edge source="ccnvxii" target="_thgadf" id="6" />
+      <edge source="ccnvxii" target="yaroslavad_m" id="7" />
+      <edge source="ccnvxii" target="natalka_1305" id="8" />
+      <edge source="ccnvxii" target="bodya.wave" id="9" />
+      <edge source="ccnvxii" target="bogenemy" id="10" />
+      <edge source="ccnvxii" target="a.ternovtsi" id="11" />
+      <edge source="ccnvxii" target="evgeni_stasuk" id="12" />
+      <edge source="ccnvxii" target="yakesliho" id="13" />
+      <edge source="ccnvxii" target="uniwixe" id="14" />
+      <edge source="ccnvxii" target="valentina.eroh" id="15" />
+      <edge source="ccnvxii" target="darii.il" id="16" />
+      <edge source="ccnvxii" target="jaegerjem" id="17" />
+      <edge source="ccnvxii" target="scarletears.store" id="18" />
+      <edge source="ccnvxii" target="lliisett" id="19" />
+      <edge source="elenaaaa_tr" target="aminaazharik" id="20" />
+      <edge source="elenaaaa_tr" target="alinash_muah" id="21" />
+      <edge source="elenaaaa_tr" target="yaroslavad_m" id="22" />
+      <edge source="elenaaaa_tr" target="natalka_1305" id="23" />
+      <edge source="elenaaaa_tr" target="evgeni_stasuk" id="24" />
+      <edge source="elenaaaa_tr" target="valentina.eroh" id="25" />
+      <edge source="r.nadtochii" target="bogenemy" id="26" />
+      <edge source="r.nadtochii" target="lliisett" id="27" />
+      <edge source="alinash_muah" target="yaroslavad_m" id="28" />
+      <edge source="alinash_muah" target="natalka_1305" id="29" />
+      <edge source="alinash_muah" target="valentina.eroh" id="30" />
+      <edge source="ultimatriixx" target="yaroslavad_m" id="31" />
+      <edge source="ultimatriixx" target="evgeni_stasuk" id="32" />
+      <edge source="ultimatriixx" target="darii.il" id="33" />
+      <edge source="ultimatriixx" target="jaegerjem" id="34" />
+      <edge source="deliia.dv" target="yaroslavad_m" id="35" />
+      <edge source="deliia.dv" target="natalka_1305" id="36" />
+      <edge source="_thgadf" target="a.ternovtsi" id="37" />
+      <edge source="_thgadf" target="darii.il" id="38" />
+      <edge source="yaroslavad_m" target="natalka_1305" id="39" />
+      <edge source="yaroslavad_m" target="evgeni_stasuk" id="40" />
+      <edge source="evgeni_stasuk" target="uniwixe" id="41" />
+      <edge source="evgeni_stasuk" target="scarletears.store" id="42" />
+      <edge source="uniwixe" target="scarletears.store" id="43" />
+    </edges>
+  </graph>
+</gexf>
