@@ -40,36 +40,36 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
+
 # ----------------------------------
 # 2) 2D vector field F = (x^2 y, -y)
 # ----------------------------------
-def Fx(x, y):
-    # x-component of the vector field with clipping to avoid overflow
-    return np.clip(x ** 2 * y, -1e3, 1e3)
+# Vector field
+def u(x, y):
+    return np.clip(x**2 * y, -1e3, 1e3)
 
-def Fy(x, y):
-    # y-component of the vector field
+def v(x, y):
     return -y
 
-# Visualization of the vector field using quiver and streamplot
-x = np.linspace(-5, 5, 20)   # grid for x
-y = np.linspace(-5, 5, 20)   # grid for y
-X, Y = np.meshgrid(x, y)     # create meshgrid
+# Grid
+x = np.linspace(-10, 10, 20)
+y = np.linspace(-10, 10, 20)
+X, Y = np.meshgrid(x, y)
 
-U = Fx(X, Y)  # calculate x-component values
-V = Fy(X, Y)  # calculate y-component values
+U = u(X, Y)
+V = v(X, Y)
 
 plt.figure(figsize=(12, 5))
 
-# Vector field with arrows (quiver)
+# Quiver plot
 plt.subplot(1, 2, 1)
-plt.quiver(X, Y, U, V, scale=500, color="blue")
+plt.quiver(X, Y, U, V, scale=5000, color="blue")  # масштаб збільшено
 plt.title("Vector field F(x,y) with quiver")
 plt.xlabel("x")
 plt.ylabel("y")
 plt.grid(True)
 
-# Vector field with streamlines (streamplot)
+# Streamplot
 plt.subplot(1, 2, 2)
 plt.streamplot(X, Y, U, V, color="red", density=1)
 plt.title("Vector field F(x,y) with streamlines")
@@ -80,23 +80,22 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-# Streamlines construction
-def create_stream_line(x0, y0, Fx, Fy, t0=0, t1=5, dt=0.01):
-    # Generate points in time interval
+# Streamlines by Euler method
+def create_stream_line(x0, y0, u, v, t0=0, t1=5, dt=0.01):
     t = np.arange(t0, t1, dt)
     xx_new = np.zeros_like(t)
     yy_new = np.zeros_like(t)
     xx_new[0], yy_new[0] = x0, y0
 
     for i in range(1, len(t)):
-        xx_new[i] = xx_new[i - 1] + Fx(xx_new[i - 1], yy_new[i - 1]) * dt
-        yy_new[i] = yy_new[i - 1] + Fy(xx_new[i - 1], yy_new[i - 1]) * dt
+        xx_new[i] = xx_new[i - 1] + u(xx_new[i - 1], yy_new[i - 1]) * dt
+        yy_new[i] = yy_new[i - 1] + v(xx_new[i - 1], yy_new[i - 1]) * dt
+
     return xx_new, yy_new
 
-# Plot streamlines starting from different initial y positions
 plt.figure(figsize=(6, 6))
-for y0 in np.linspace(-4, 4, 7):   # initial points
-    x1, y1 = create_stream_line(-4, y0, Fx, Fy)
+for y0 in np.linspace(-10, 10, 7):
+    x1, y1 = create_stream_line(-4, y0, u, v)
     plt.plot(x1, y1)
 
 plt.title("Stream lines by integration (Euler method)")
@@ -140,6 +139,7 @@ ax.legend([Patch(color='grey')], ['3D quiver (normalized)'], loc='upper left')
 plt.tight_layout()
 plt.show()
 
+
 # ----------------------------------------------
 # 4) Tensor field visualization using glyphs
 #    (ellipsoids, cuboids, cylinders, superquadrics)
@@ -152,6 +152,7 @@ def tensor_matrix(x, y, z):
         [0.0, np.log(y) / np.sin(y), np.sqrt(z) / x],
         [0.0, 0.0, np.log(z) / np.sin(z)]
     ])
+
 
 # Draw an ellipsoid
 def plot_ellipsoid(ax, center, radii, rotation=np.eye(3), color='C0', alpha=0.5):
@@ -170,6 +171,7 @@ def plot_ellipsoid(ax, center, radii, rotation=np.eye(3), color='C0', alpha=0.5)
 
     ax.plot_surface(x, y, z, color=color, alpha=alpha, linewidth=0, shade=True)
 
+
 # Draw a cuboid
 def plot_cuboid(ax, center, size, color='C1', alpha=0.5):
     l, w, h = size
@@ -186,6 +188,7 @@ def plot_cuboid(ax, center, size, color='C1', alpha=0.5):
     ax.plot_surface(X, np.full_like(X, y[0]), Z, color=color, alpha=alpha)
     ax.plot_surface(X, np.full_like(X, y[1]), Z, color=color, alpha=alpha)
 
+
 # Draw a cylinder
 def plot_cylinder(ax, center, radius, height, color='C2', alpha=0.5):
     z = np.linspace(center[2] - height / 2, center[2] + height / 2, 20)
@@ -194,6 +197,7 @@ def plot_cylinder(ax, center, radius, height, color='C2', alpha=0.5):
     x_grid = radius * np.cos(theta_grid) + center[0]
     y_grid = radius * np.sin(theta_grid) + center[1]
     ax.plot_surface(x_grid, y_grid, z_grid, color=color, alpha=alpha)
+
 
 # Draw a superquadric (generalized ellipsoid)
 def plot_superquadric(ax, center, a, b, c, n1=1, n2=1, color='C3', alpha=0.5):
@@ -208,6 +212,7 @@ def plot_superquadric(ax, center, a, b, c, n1=1, n2=1, color='C3', alpha=0.5):
     y = b * cosu * sinv + center[1]
     z = c * sinu + center[2]
     ax.plot_surface(x, y, z, color=color, alpha=alpha)
+
 
 # Main visualization loop
 fig = plt.figure(figsize=(12, 10))
