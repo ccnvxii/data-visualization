@@ -139,12 +139,10 @@ ax.legend([Patch(color='grey')], ['3D quiver (normalized)'], loc='upper left')
 plt.tight_layout()
 plt.show()
 
-
 # ----------------------------------------------
 # 4) Tensor field visualization using glyphs
 #    (ellipsoids, cuboids, cylinders, superquadrics)
 # ----------------------------------------------
-
 # Tensor matrix definition
 def tensor_matrix(x, y, z):
     return np.array([
@@ -171,7 +169,6 @@ def plot_ellipsoid(ax, center, radii, rotation=np.eye(3), color='C0', alpha=0.5)
 
     ax.plot_surface(x, y, z, color=color, alpha=alpha, linewidth=0, shade=True)
 
-
 # Draw a cuboid
 def plot_cuboid(ax, center, size, color='C1', alpha=0.5):
     l, w, h = size
@@ -188,7 +185,6 @@ def plot_cuboid(ax, center, size, color='C1', alpha=0.5):
     ax.plot_surface(X, np.full_like(X, y[0]), Z, color=color, alpha=alpha)
     ax.plot_surface(X, np.full_like(X, y[1]), Z, color=color, alpha=alpha)
 
-
 # Draw a cylinder
 def plot_cylinder(ax, center, radius, height, color='C2', alpha=0.5):
     z = np.linspace(center[2] - height / 2, center[2] + height / 2, 20)
@@ -197,7 +193,6 @@ def plot_cylinder(ax, center, radius, height, color='C2', alpha=0.5):
     x_grid = radius * np.cos(theta_grid) + center[0]
     y_grid = radius * np.sin(theta_grid) + center[1]
     ax.plot_surface(x_grid, y_grid, z_grid, color=color, alpha=alpha)
-
 
 # Draw a superquadric (generalized ellipsoid)
 def plot_superquadric(ax, center, a, b, c, n1=1, n2=1, color='C3', alpha=0.5):
@@ -212,7 +207,6 @@ def plot_superquadric(ax, center, a, b, c, n1=1, n2=1, color='C3', alpha=0.5):
     y = b * cosu * sinv + center[1]
     z = c * sinu + center[2]
     ax.plot_surface(x, y, z, color=color, alpha=alpha)
-
 
 # Main visualization loop
 fig = plt.figure(figsize=(12, 10))

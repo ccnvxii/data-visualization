@@ -5,7 +5,6 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-
 def is_hidden_dir(d):
     # Check if a directory is hidden
     if sys.platform.startswith("win"):

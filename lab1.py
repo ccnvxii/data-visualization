@@ -8,11 +8,9 @@ import matplotlib.pyplot as plt
 x = np.linspace(-2, 2, 1000)
 y = np.cos(5 * np.pi * x) * (np.sin(3 * np.pi * x) ** 2) + 3 * np.sin(np.pi * x) * (np.cos(3 * np.pi * x) ** 3)
 
-
 # Define z function
 def z_func(x):
     return np.where(x <= 0, np.sqrt(1 + x ** 2), (1 + x ** 3) / (1 + np.sqrt(1 + np.exp(-0.5 * x))))
-
 
 z = z_func(x)
 
@@ -45,7 +43,6 @@ plt.show()
 # ----------------------------------------
 # 2. Surface plot of z = 10x²cos⁵(x) - 2y³
 # ----------------------------------------
-
 x = np.linspace(-2, 2, 100)
 y = np.linspace(-2, 2, 100)
 X, Y = np.meshgrid(x, y)  # Create a 2D grid of x and y values
@@ -126,7 +123,6 @@ ax.set_title(r'Surface plot: $\rho = a \sqrt{\cos(2\phi) + \sqrt{\cos^2(2\phi)(b
 # Add color bar
 fig.colorbar(surf, shrink=0.5, aspect=10)
 plt.show()
-
 
 # ---------------------------------------------
 # 4. Surface of 2nd order (elliptic paraboloid)
@@ -211,5 +207,4 @@ ax.set_xlabel('Year')
 ax.set_ylabel('Country')
 ax.set_zlabel('Population (million)')
 ax.set_title('Population by Country (3D Bar Chart)')
-
 plt.show()

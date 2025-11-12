@@ -3,7 +3,6 @@
 
 import matplotlib.pyplot as plt
 
-
 # Binary Tree Implementation
 class Node:
     def __init__(self, key):
@@ -11,7 +10,6 @@ class Node:
         self.left = None
         self.right = None
         self.parent = None
-
 
 class Tree:
     def __init__(self):
@@ -36,7 +34,6 @@ class Tree:
             else:
                 self.add_node(key, node.right)
 
-
 # Knuth-style layout
 def knuth_layout(node, x=0, y=0, positions=None, level_gap=1.5, sibling_gap=1):
     if positions is None:
@@ -47,7 +44,6 @@ def knuth_layout(node, x=0, y=0, positions=None, level_gap=1.5, sibling_gap=1):
     if node.right:
         knuth_layout(node.right, x + sibling_gap, y - level_gap, positions, level_gap, sibling_gap / 1.5)
     return positions
-
 
 # Tree Visualization
 def draw_tree(tree):
@@ -77,7 +73,6 @@ def draw_tree(tree):
         ax.text(x, y, str(key), fontsize=12, ha='center', va='center')
 
     plt.show()
-
 
 # --------------------------------
 t = Tree()

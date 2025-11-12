@@ -18,13 +18,11 @@ ax = plt.axes(xlim=(0, 10), ylim=(0, 10))  # Set axes limits
 width, height = 1.5, 1
 patch = FancyBboxPatch((0, 5), width, height, boxstyle="round,pad=0.1", fc='skyblue')
 
-
 # 3. Initialize the animation
 def init():
     patch.set_bounds(0, 5, width, height)  # Set initial position
     ax.add_patch(patch)  # Add rectangle to axes
     return patch,
-
 
 # 4. Animation function (called for each frame)
 def animate(i):
@@ -32,7 +30,6 @@ def animate(i):
     y = 5 + 2 * np.sin(0.5 * x * np.pi)  # Move along sine wave on y-axis
     patch.set_bounds(x, y, width, height)  # Update rectangle position
     return patch,
-
 
 # 5. Create the animation
 anim = animation.FuncAnimation(fig, animate,
