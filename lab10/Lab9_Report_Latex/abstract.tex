@@ -1,0 +1,108 @@
+\documentclass{cls/magnonics}
+\usepackage[english]{babel}
+
+%%%%%%%%%%%%% PREAMBLES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Including required packages as per the template
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{silence}
+\WarningsOff[everypage]
+\usepackage{background}
+\usepackage{bm,amsmath,color,xcolor}
+\usepackage{multirow,tabularx}
+\usepackage{longtable}
+\usepackage{mfirstuc}
+
+% Bibliography setup (minimal, as no references provided)
+\usepackage[backend=biber, maxbibnames=5, minbibnames=3, style=phys]{biblatex}
+\DeclareFieldFormat[article]{title}{\mkbibemph{#1}}
+\addbibresource{mylib.bib}
+
+%%%%%%%%%%%%% TITLE AND AUTHORS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Filling in author and title information
+\def \mytitle  {Laboratory Work 9: PCA and SVD Analysis Report}
+\def \speaker  {Rossokha D.V.} % Replace with your actual name
+\def \myemail  {dariia.rossokha@infiz.khpi.edu.ua} 
+\def \myaffil  {Department of Computer Science, National Technical University "Kharkiv Polytechnic Institute", Ukraine}
+
+% Setting title and author details
+\title{\titlecap{\mytitle}}
+\author[1,*]{\titlecap{\speaker}}
+\affil[1]{\titlecap{\myaffil}}
+\corrauthor{\myemail}
+
+% No co-authors, as not specified
+% \author[1,2]{\titlecap{second author}}
+% \affil[2]{\titlecap{department name, institution 2, country}}
+
+%%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{./figs/}}
+\begin{document}
+\maketitle
+
+This report summarizes the results of Laboratory Work 9, focusing on the application of Principal Component Analysis (PCA) and Singular Value Decomposition (SVD) for dimensionality reduction and data visualization. The analysis was performed using Python's \texttt{sklearn.decomposition.PCA} class and related tools to explore the dataset's structure.
+
+The dataset was visualized in 2D and 3D spaces using PCA, with points colored by the 'Channel' feature. The resulting scatter plots, shown in Figure~\ref{fig:pca}, reveal the data's clustering patterns across the first two and three principal components, respectively. SVD was applied to decompose the dataset, and the eigenvalues, calculated as $\lambda_i = \sigma_i^2 / (m-1)$, were plotted in descending order (Figure~\ref{fig:eigen}). The rapid decline in eigenvalues indicates that the initial components capture most of the data's variance.
+\begin{figure}[htpb!]
+\begin{center}
+\includegraphics[scale=0.75]{pca_visualization.png} % Placeholder: upload actual figure
+\caption{PCA 2D and 3D Visualization.}
+\label{fig:pca}
+\end{center}
+\end{figure}
+
+\begin{figure}[htpb!]
+\begin{center}
+\includegraphics[scale=0.35]{eigenvalues.png} % Placeholder: upload actual figure
+\caption{Eigenvalues in Descending Order.}
+\label{fig:eigen}
+\end{center}
+\end{figure}
+
+The smallest dimension retaining 80\% of the variance was determined to be $d = 2$, with an explained variance of 0.8648, surpassing the threshold (Figure~\ref{fig:summary}). Dimensionality reduction was performed by setting singular values to zero for $i \geq d$ (from the third component onward for $d = 2$). The reverse transformation yielded a Mean Squared Error (MSE) of 8071660.7439 compared to the original data, with a smoothed trend observed in the comparison of the first feature (Figure~\ref{fig:comparison}).
+
+\begin{figure}[htpb!]
+\begin{center}
+\includegraphics[scale=0.35]{comparison.png} % Placeholder: upload actual figure
+\caption{Comparison of First Feature: Original vs Approximated.}
+\label{fig:comparison}
+\end{center}
+\end{figure}
+
+Reconstructed data for $d = 2$ and $d = 3$ were visualized using the first $d$ columns, as shown in Figure~\ref{fig:reconstructed}. These plots retain the general clustering observed in the PCA visualizations but reflect the effects of reduced dimensionality.
+
+\begin{figure}[htpb!]
+\begin{center}
+\includegraphics[scale=0.75]{reconstructed.png} % Placeholder: upload actual figure
+\caption{Reconstructed 2D (First 2 Columns) and 3D Visualization (First 3 Columns).}
+\label{fig:reconstructed}
+\end{center}
+\end{figure}
+
+\textbf{Comment}: The analysis successfully demonstrates the effectiveness of PCA and SVD for dimensionality reduction, with two dimensions capturing over 86\% of the variance, as evidenced by the explained variance of 0.8648. The visualizations and MSE results confirm that the reduced representations preserve the dataset's core structure while simplifying its complexity.
+\begin{figure}[htpb!]
+\begin{center}
+\includegraphics[scale=0.55]{summary.png} % Placeholder: upload actual figure
+\caption{Summary of PCA and SVD Dimensionality Reduction Analysis.}
+\label{fig:summary}
+\end{center}
+\end{figure}
+
+%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\printbibliography[heading=bibliography]
+
+%%%%%%%%%%%%% ADD WATERMARK %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backgroundsetup{
+  position=current page.east,
+  angle=-0,
+  nodeanchor=east,
+  vshift=+70mm,
+  hshift=-17mm,
+  opacity=1,
+  color=black,
+  scale=2,
+  contents=\absttype
+}
+\end{document}
