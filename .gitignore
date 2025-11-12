@@ -36,3 +36,5 @@ sdist/
 *.DS_Store
 *.swp
 *~
+
+.labs-reports/
