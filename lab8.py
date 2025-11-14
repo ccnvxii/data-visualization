@@ -31,15 +31,27 @@ for i, (name, model) in enumerate(methods.items(), 1):
 plt.tight_layout()
 plt.show()
 
-#  3D Visualization
-isomap_3d = Isomap(n_neighbors=n_neighbors, n_components=3)
-X_iso_3d = isomap_3d.fit_transform(X_scaled)
+# 3D Visualization for all methods
+fig = plt.figure(figsize=(12, 10))
+for i, (name, model) in enumerate(methods.items(), 1):
+    # Create 3D version of each model
+    if name == "Isomap":
+        model_3d = Isomap(n_neighbors=n_neighbors, n_components=3)
+    elif name == "Standard LLE":
+        model_3d = LocallyLinearEmbedding(n_neighbors=n_neighbors, n_components=3, method="standard")
+    elif name == "MDS":
+        model_3d = MDS(n_components=3, n_init=4, random_state=42)
+    elif name == "t-SNE":
+        model_3d = TSNE(n_components=3, random_state=42)
 
-fig = plt.figure(figsize=(10, 8))
-ax = fig.add_subplot(111, projection='3d')
-ax.scatter(X_iso_3d[:, 0], X_iso_3d[:, 1], X_iso_3d[:, 2], c='skyblue', s=40, alpha=0.7)
-ax.set_title("Isomap 3D Embedding")
-ax.set_xlabel("Component 1")
-ax.set_ylabel("Component 2")
-ax.set_zlabel("Component 3")
+    X_3d = model_3d.fit_transform(X_scaled)
+
+    ax = fig.add_subplot(2, 2, i, projection='3d')
+    ax.scatter(X_3d[:, 0], X_3d[:, 1], X_3d[:, 2], s=30, alpha=0.7)
+    ax.set_title(f"{name} (3D)")
+    ax.set_xlabel("Component 1")
+    ax.set_ylabel("Component 2")
+    ax.set_zlabel("Component 3")
+
+plt.tight_layout()
 plt.show()
